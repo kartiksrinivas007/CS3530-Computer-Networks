@@ -1,0 +1,16 @@
+
+Acess in enterprise:-
+typically ethernet, IEEE 802.11 === WIFI  and this is basically an acess point that is kept 
+
+Broadband resisential acess is basically DSL and cable
+
+cellular network -> 10 Mbps ish speed, 
+they mainly  use the radio spectrum for provinding unlike DSL and cable that provide the copper cables
+
+there are many physical mediums for transmission, they are optical or electromagnetic pules for weach bit of data that is sent form one to tother place ( clearly this will be at the speed of light)
+
+guided media -> through solids liek cables
+unguided -wireless LAN and cellular networks
+
+ 
+
