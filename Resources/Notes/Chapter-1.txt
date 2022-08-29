@@ -1,0 +1,12 @@
+What is the internet ?
+The two most common packet switches are called routers and link-layer switches
+the estimated amount of data transmissions per second may be ~40 Exabytes per second
+
+exa ~ 10^18
+
+THe DSLAM is located at the telephone company's CO. DSLAM converts the analog signals in the tel wire back to digital signals.
+
+the telco downstream is ISP, speeds ~ 50 kHz to 1mHz and the upstream is slightly slower ~4kHz -> 50kHz and the last frequency band ois 0 -> 4kHz is for telephone communication.
+
+
+
