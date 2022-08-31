@@ -1,0 +1,32 @@
+application layer
+HTTP
+SMTP
+FTP
+They are for web document transfer, Mails and messages and FTP (file transfer)
+application_layer is often called the message
+
+Transport layer 
+TCP 
+UDP
+TCP provides complete flow of control ( congestion control and breaks messages into smaller bits to mantain the transmission rate if needed) unlike UDP which does nto provide the same
+These layers now form segments
+
+Network layer - IP layer (datagrams)
+the layers now use the one onad only IP protocol contained within each router and network component as part of the internet, these contain the routing protocols that determine the path of the datagrams from the source location to the destination.
+
+The network administrator can run any routing protocoal as desired
+
+Link Layer protocol 
+This helps in transferring the datagrams along the actual routes themselves, they help in the hops form one to another, they also provvide different relibale delivery services (however this is different form the one which is provided by the TCP protocol)
+The Link layer is present on each of the routers and is responsible for passign down the datagrams through itself
+the examples of so and so are  - ethernet, wifi, PPP, and even DOCSIS
+the outputs are called frames
+
+Physical layer
+the physical layer contains the frames and transfers them BIT by BIT throught the cables it may change depending on the communication medium like twisted C wire or fibre optics etc
+
+The layers are numbered from the bottom , layer 3 is IP protocol ( the network layer) 
+
+Link -layers only contain the layers 1 and 2 , link layers do not even recognize the IP addresses they recognize ethernet addresses ( synonymous to mac address ig ?)
+
+Each layer encapsulates the other so this si called an encapsulation process!
