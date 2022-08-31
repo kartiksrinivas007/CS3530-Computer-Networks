@@ -1,0 +1,12 @@
+Delays ( on the node ) not packetization delays of any sort,
+The time for the packet to completely arrive onto the node and the time to examine and change the header of this packet is called - proc delay
+
+after reading it and understanding its IP, the routing protocol, sends it into a queue - where it faces queueing delay.
+
+Post the queueing it is started transferrring the entire packet onto the link of the transmission link this is called transmission delay 
+
+The time now for it to reach the next router is called propagation delay ( in WAN its order o fmicros to milli seconds) 
+
+for N- 1 routers the tolal time taken for end to end transmission can be seen as 		T_tot = N(d_proc + d_trans + d_prop) (for uncongested network)
+
+throughpput = min (R_i) in an ideal network, however, most of the time the acess ISP is the one which causes the small amount of throughput.
