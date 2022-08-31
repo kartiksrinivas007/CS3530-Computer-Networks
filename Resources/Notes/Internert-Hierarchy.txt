@@ -1,0 +1,7 @@
+The internet has the following :-
+1 - gloabal transit ISP, access ISP's
+2 - multiple global transit ISP's and  access ISP's 
+3- Tier architecture was built with regional ISP's and then Tier - 1- ISP's 
+4 - Now POP's points of presence for all the ISP's and then Internate exchange points for peering (without paying for this customer -provider ISP type stuff was now made) - multi homing ISP's were also allowed( connecting to 2 tier -1's etc)
+5 - Content provider networks, tap in and directly connect to low tier ISP's 
+(eg : google , they also talk to tier - 1 but they control their expense)
