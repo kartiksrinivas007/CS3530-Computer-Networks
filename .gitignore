@@ -1,2 +1,8 @@
 Books/
-
+*.log
+*.aux
+*.fldb
+*.bbl
+*.blg
+*.out
+*.toc

@@ -1,0 +1,44 @@
+\section{Implementation Details}
+Whatever is to be explained is already present inside the \textit{\textcolor{red}{README.md}} file
+There are two ways to run the program If you run $\textit{\textcolor{red}{client.py }} $You will have to enter the requests manually This is an implementation of \textcolor{blue}{persistent HTTP} . 
+The other way is to use the \textcolor{blue}{impersistent HTTP} method
+and just run the shell script $\textit{\textcolor{red}{run\_tests.sh }}$
+
+\subsection{Internal Implementation}
+Inorder to send Multiple requests over a connection, there must be something sent to the server that indicates that the connection needs to be closed
+This \textcolor{blue}{END} request is sent internally to signify that the connection has ended from the cleint side. This allows graceful termination on
+the server side. You can see that Wireshark Reecognizes the normal Requests as HTTP requests as well (See the Pcap files).
+The parsing is done by using the python \textit{\textcolor{red}{string.split()}} function.
+
+\section{Basic Topology Analysis}
+
+\subsection{File Locations}
+The \textit{Pcap} files for the \textcolor{blue}{GET PUT and DELETE} requests is under \textit{\textcolor{red}{Real-pcaps/H1-trace-Get-Put-Delete.pcap}}
+and the \textit{Pcap} files for the Get request time analysis are under the folder \textit{\textcolor{red}{GET-request-Analysis}}
+\subsection{GET - Request Time analysis}
+All times have been calculated using \textit{\textcolor{red}{Wireshark}} Timestamps on the client side.
+(\textbf{quick trick}: use keystrokes control + T to get time differences quickly )
+The GET Requests use \textcolor{blue}{Impersistent HTTP} Method
+\\
+
+\begin{center}
+    \begin{tabular}{c | c | c | c}
+
+        Key & Request 1 & Request 2 & Request 3 \\
+        \hline
+        key1 & 0.0009 & 0.0011 & 0.00087 \\
+        \hline
+        key2 &  0.0014 & 0.0008 &  0.0006\\ 
+        \hline
+        key3 &  0.0014 & 0.001 & 0.0007 \\
+        \hline
+        key4 &  0.0009& 0.001 & 0.0006\\
+        \hline
+        key5 &  0.001 &  0.002 & 0.0007\\
+        \hline
+        key6 &  0.0009 & 0.0009 & 0.0012\\
+        \hline
+        \textcolor{blue}{Average} & 0.0010833 & 0.001333 & 0.00076\\
+        \hline 
+    \end{tabular}
+\end{center}
