@@ -48,60 +48,6 @@ def establish_server_connection(server_ip, port_num):
   return server_socket
 
 
-# def parse_cache(recv_string,c,cache_dict):
-
-#   if(recv_string[:3] == "GET"):
-
-#     """
-#      If the request is a GET request then first check if the key exists in the cached dictionary and then
-#      return, else establisha  connection to the server and then forward the request to the server
-#     """
-    
-#     print("GET request received")
-#     list_string = recv_string.split("request=")
-#     print(list_string)
-#     key_http = list_string[1].split(' ')
-#     print(key_http)
-#     key = key_http[0]
-#     if(cache_dict.has_key(key)):
-#       c.send("The value of the key sent = " + cache_dict[key])
-#     else:  
-#       server_socket  = establish_server_connection(server_ip,port_num)
-#       server_socket.send(recv_string.encode())
-#       recv_server = str(server_socket.recv(1024).decode())
-#       print("Received from server = ", recv_server)
-#       c.send("From Server -> Cache -> Client  = " + recv_server)
-#   elif(recv_string[:3] == "PUT"):
-
-#     """simply forward the PUT request to the Server and 
-#     get the received string back """
-
-#     print("PUT request received")
-#     server_socket = establish_server_connection(server_ip, port_num)
-#     server_socket.send(recv_string.encode())
-#     recv_server = str(server_socket.recv(1024).decode())
-#     print("Received from server = ", recv_server)
-#     c.send("From Server -> Cache -> Client" + recv_server)
-
-
-#   elif(recv_string[:6] == "DELETE"):
-
-#     """simply forward the DELETE request to the Server and 
-#     get the received string back """
-
-#     print("DELETE request received")
-#     server_socket = establish_server_connection(server_ip, port_num)
-#     server_socket.send(recv_string.encode())
-#     recv_server = str(server_socket.recv(1024).decode())
-#     print("Received from server = ", recv_server)
-#     c.send("From Server -> Cache -> Client" + recv_server)
-#     ### cache deletion tbd
-#   else:
-#     #END request is needed
-#     #parsing should be similar to server.py
-#     print("Unable to parse request")
-
-
 def parse_cache(recv_string,c,server_dict):
 
   """
@@ -126,6 +72,9 @@ def parse_cache(recv_string,c,server_dict):
         server_socket  = establish_server_connection(server_ip,port_num)
         server_socket.send(recv_string.encode())
         recv_server = str(server_socket.recv(1024).decode())
+        if(recv_server.find("OK") < 0):
+          c.send(recv_server.encode())
+          return False
         http_value_carriage = recv_server.split("OK")
         value = http_value_carriage[1].strip()
         # print("value of requested key = ", value)
@@ -147,14 +96,6 @@ def parse_cache(recv_string,c,server_dict):
     #   return False
   elif(recv_string[:3] == "PUT"):
     print("PUT request received")
-    # list_string = recv_string.split("request=")
-    # print(list_string)
-    # key_value_http = list_string[1].split(' ')
-    # print(key_value_http)
-    # key_value = key_value_http[0].split('/')
-    # print(key_value)
-    # key = key_value[0]
-    # value = key_value[1]
     list_string = recv_string.split(" ")
     file_path = list_string[1]
     print("File path = ", file_path)
@@ -211,17 +152,6 @@ def parse_cache(recv_string,c,server_dict):
       return False
 
 
-    # try:
-    #   del server_dict[key]
-    #   print("Successful Delete")
-    #   c.send("200 OK")
-    #   print("updated dictionary = ", server_dict)
-    #   return True
-    # except:
-    #   print("Failed DELETE Request")
-    #   c.send("404 Key Not Found")
-    #   return False
-
   elif(recv_string[:3] == "END"):
     print("Ending Connection")
     c.send("Ending Connection")
@@ -234,19 +164,7 @@ def parse_cache(recv_string,c,server_dict):
 
 
 while True:
-#here c is the connection
-  # c, addr = s.accept()
-  # print ('Got connection from', addr )
-  # recvmsg = c.recv(1024).decode()
-  # print('Server received '+recvmsg)
-  # c.send('Hello client'.encode())'---'
-  # c, addr = establish_client_connection(s)
 
-  # recvmsg = c.recv(1024).decode()
-  # print("type of received message = ", type(recvmsg))
-  # recv_string = str(recvmsg)
-  # print("received message in string format = ", recv_string)
-  # parse_cache(recv_string,c,cache_dict)
   #---
   status = False
   try:
@@ -265,12 +183,6 @@ while True:
     print("Ending Server Session Due to Keyboard-IP or error")
     break
   
-  #Write your code here
-  #1. Uncomment c.send 
-  #2. Parse the received HTTP request
-  #3. Do the necessary operation depending upon whether it is GET, PUT or DELETE
-  #4. Send response
-  ##################
 
   c.close()
   #break

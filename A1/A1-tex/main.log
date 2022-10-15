@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.9.11)  15 OCT 2022 16:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.9.11)  15 OCT 2022 17:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/arkartik/IITH-courses/CS3530/Assignment-1/main.tex
-(/home/arkartik/IITH-courses/CS3530/Assignment-1/main.tex
+**/home/arkartik/IITH-courses/CS3530/A1/A1-tex/main.tex
+(/home/arkartik/IITH-courses/CS3530/A1/A1-tex/main.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2022-01-21> (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
@@ -371,7 +371,7 @@ Package: gobble 2019/01/04 v0.2 Provides more gobble macros
 Package: physics 
  (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 Package: xparse 2022-01-12 L3 Experimental document command parser
-))) (./main.aux (./title.aux) (./Plag.aux) (./sections/S1.aux) (./sections/S2.aux) (./sections/S3.aux))
+))) (./main.aux (./title.aux) (./Plag.aux) (./sections/Imp.aux) (./sections/S1.aux) (./sections/S2.aux))
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
@@ -432,7 +432,7 @@ LaTeX Info: Redefining \nameref on input line 4.
 \openout2 = `title.aux'.
 
  (./title.tex
-<img/logo.jpg, id=44, 1584.92125pt x 1595.9625pt>
+<img/logo.jpg, id=48, 1584.92125pt x 1595.9625pt>
 File: img/logo.jpg Graphic file (type jpg)
 <use img/logo.jpg>
 Package pdftex.def Info: img/logo.jpg  used on input line 10.
@@ -452,7 +452,7 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 4.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-</home/arkartik/Documents/Personal/Personal/Personal_marksheets/Docs/Signature.JPG, id=52, 211.54031pt x 95.6072pt>
+</home/arkartik/Documents/Personal/Personal/Personal_marksheets/Docs/Signature.JPG, id=56, 211.54031pt x 95.6072pt>
 File: /home/arkartik/Documents/Personal/Personal/Personal_marksheets/Docs/Signature.JPG Graphic file (type jpg)
 <use /home/arkartik/Documents/Personal/Personal/Personal_marksheets/Docs/Signature.JPG>
 Package pdftex.def Info: /home/arkartik/Documents/Personal/Personal/Personal_marksheets/Docs/Signature.JPG  used on input line 16.
@@ -473,45 +473,53 @@ l.7 \include{Plag}
 
 
 ]
-\openout2 = `sections/S1.aux'.
+\openout2 = `sections/Imp.aux'.
 
- (./sections/S1.tex
-Underfull \hbox (badness 10000) in paragraph at lines 19--23
+ (./sections/Imp.tex)
+Underfull \hbox (badness 10000) in paragraph at lines 24--12
 
  []
 
-) [3
+[3
+
+]
+\openout2 = `sections/S1.aux'.
+
+ (./sections/S1.tex
+Underfull \hbox (badness 10000) in paragraph at lines 8--12
+
+ []
+
+) [4
+
+
 
 ]
 \openout2 = `sections/S2.aux'.
 
- (./sections/S2.tex) [4
+ (./sections/S2.tex) [5
 
 
 
 ]
-\openout2 = `sections/S3.aux'.
-
-
-No file sections/S3.tex.
 No file main.bbl.
-(./main.aux (./title.aux) (./Plag.aux) (./sections/S1.aux) (./sections/S2.aux) (./sections/S3.aux))
+(./main.aux (./title.aux) (./Plag.aux) (./sections/Imp.aux) (./sections/S1.aux) (./sections/S2.aux))
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 39AE56DDAD2E01771644E89F0534C5CE;1680.
+(rerunfilecheck)             Checksum: 5A93CEB97F6D6FE356385F525D684123;1811.
  ) 
 Here is how much of TeX's memory you used:
- 15462 strings out of 480171
- 258172 string characters out of 5894489
- 540666 words of memory out of 5000000
+ 15469 strings out of 480171
+ 258266 string characters out of 5894489
+ 540665 words of memory out of 5000000
  33112 multiletter control sequences out of 15000+600000
  478772 words of font info for 64 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 88i,7n,94p,393b,345s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 88i,7n,94p,390b,345s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on main.pdf (5 pages, 1277153 bytes).
+Output written on main.pdf (6 pages, 1278888 bytes).
 PDF statistics:
- 141 PDF objects out of 1000 (max. 8388607)
- 112 compressed objects within 2 object streams
- 16 named destinations out of 1000 (max. 500000)
- 91 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 155 PDF objects out of 1000 (max. 8388607)
+ 125 compressed objects within 2 object streams
+ 21 named destinations out of 1000 (max. 500000)
+ 99 words of extra memory for PDF output out of 10000 (max. 10000000)
 

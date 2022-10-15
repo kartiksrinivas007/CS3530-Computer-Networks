@@ -17,20 +17,6 @@ def establish_server_connection(server_ip, port_num):
 
 port = 12346
 
-# s.connect((dst_ip, port))
-
-# #Write your code here:
-# #1. Add code to send HTTP GET / PUT / DELETE request. The request should also include KEY.
-# #2. Add the code to parse the response you get from the server.
-# #s.send('GET-key5'.encode())
-# #s.send('PUT Server'.encode())
-# s.send("Hello Cache Server")
-# #s.send('GET /assignment1?request=key1 HTTP/1.1'.encode())
-# #s.send('PUT /assignment1?request=key7 val7 HTTP/1.1'.encode())
-# s.send('GET /assignment1?request=key2 HTTP/1.1'.encode())
-# print ('Client received '+s.recv(1024).decode())
-# print("Handshake complete")
-# print('Client received '+s.recv(1024).decode())
 try:
 	s = establish_server_connection(cacheIP, port)
 	status = True

@@ -1,0 +1,26 @@
+\section{Implementation Details}
+Whatever is to be explained is already present inside the \textit{\textcolor{red}{README.md}} file
+There are two ways to run the program If you run $\textit{\textcolor{red}{client.py }} $You will have to enter the requests manually This is an implementation of \textcolor{blue}{persistent HTTP} . 
+The other way is to use the \textcolor{blue}{impersistent HTTP} method
+and just run the shell script $\textit{\textcolor{red}{run\_tests.sh }}$
+
+\subsection{Internal Implementation}
+Inorder to send Multiple requests over a connection, there must be something sent to the server that indicates that the connection needs to be closed
+This \textcolor{blue}{END} request is sent internally to signify that the connection has ended from the cleint side. This allows graceful termination on
+the server side. You can see that Wireshark Reecognizes the normal Requests as HTTP requests as well (See the Pcap files).
+The parsing is done by using the python \textit{\textcolor{red}{string.split()}} function.
+
+\subsection{Error Handling}
+There has been usage of Error handling using try-except blocks in python. Appropriate Error codes are also sent back to the client.
+Here are the Error codes:-
+\begin{enumerate}
+    \item \textcolor{blue}{HTTP/1.1 200 OK} 
+    \item \textcolor{red}{HTTP/1.1 404 Key Not found}
+    \item \textcolor{red}{HTTP/1.1 400 Bad Request}
+
+\end{enumerate}
+
+
+The last one is for the case where the request cannot be parsed. You can test these by running the python file barebones, i.e only run 
+\textit{\textcolor{blue}{python client.py}} on the xterm window for node h1\\
+\

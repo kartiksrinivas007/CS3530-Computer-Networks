@@ -3,9 +3,7 @@ import time
 
 serverIP = "10.0.1.2"
 
-dst_ip = serverIP #str(input("Enter dstIP: "))
-# s = socket.socket()
-
+dst_ip = serverIP 
 print(dst_ip)
 
 port = 12346
@@ -18,16 +16,7 @@ def establish_server_connection(server_ip, port_num):
 	print("Handshake complete")
 	return server_socket
 
-# s.connect((dst_ip, port))
 
-#Write your code here:
-#1. Add code to send HTTP GET / PUT / DELETE request. The request should also include KEY.
-#2. Add the code to parse the response you get from the server.
-#s.send('GET-key5'.encode())
-#s.send('PUT Server'.encode())
-# s.send("Hello Server")
-#s.send('GET /assignment1?request=key1 HTTP/1.1'.encode())
-#s.send('PUT /assignment1?request=key7 val7 HTTP/1.1'.encode())
 try:
 	s = establish_server_connection(serverIP, port)
 	status = True

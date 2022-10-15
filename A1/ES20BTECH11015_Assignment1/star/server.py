@@ -63,14 +63,6 @@ def parse(recv_string,c,server_dict):
       return False
   elif(recv_string[:3] == "PUT"):
     print("PUT request received")
-    # list_string = recv_string.split("request=")
-    # print(list_string)
-    # key_value_http = list_string[1].split(' ')
-    # print(key_value_http)
-    # key_value = key_value_http[0].split('/')
-    # print(key_value)
-    # key = key_value[0]
-    # value = key_value[1]
     list_string = recv_string.split(" ")
     file_path = list_string[1]
     print("File path = ", file_path)
