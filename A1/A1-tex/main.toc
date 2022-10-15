@@ -1,0 +1,10 @@
+\contentsline {section}{\numberline {1}Implementation Details}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Internal Implementation}{3}{subsection.1.1}%
+\contentsline {section}{\numberline {2}Basic Topology Analysis}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}File Locations}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}GET - Request Time analysis}{3}{subsection.2.2}%
+\contentsline {section}{\numberline {3}Star Topology Analysis }{4}{section.3}%
+\contentsline {subsection}{\numberline {3.1}File Locations}{4}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}GET - Request Time analysis}{4}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}GET Request Time analysis}{4}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Reasons for Results}{4}{subsection.3.4}%

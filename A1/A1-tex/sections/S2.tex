@@ -1,0 +1,45 @@
+\section{Star Topology Analysis }
+
+
+\subsection{File Locations}
+The \textit{Pcap} files for the \textcolor{blue}{GET} request for key-1 for all three interfaces \textit{\textcolor{orange}{s1-eth1, s1-eth2, s1-eth3 }}is under \textit{\textcolor{red}{Real-pcaps/H1.pcap, H2.pcap, H3.pcap}}
+and the \textit{Pcap} files for the Get request time analysis are under the folder \textit{\textcolor{red}{GET-request-Analysis}}
+\subsection{GET - Request Time analysis}
+The GET Requests use \textcolor{blue}{Impersistent HTTP} Method
+
+\subsection{GET Request Time analysis}
+    This is done through \textcolor{blue}{Impersistent HTTP} Requests. \\ The files that contain the pcap traces for the numbers 
+    are \textit{\textcolor{red}{First-Time.pcap, Second-Time.pcap, Third-Time.pcap}}
+\begin{center}
+
+\begin{tabular}{c |c |c |c }
+    Key & Request 1 & Request 2 & Request 3 \\
+    \hline
+    key1 & 0.00185 & 0.002 & 0.0081 \\
+    \hline
+    key2 & 0.004 &0.006  & 0.00075 \\
+    \hline
+    key3 & 0.0042 & 0.001 & 0.0005 \\
+    \hline
+
+    key4 & 0.004& 0.001 & 0.0008 \\
+    \hline
+
+    key5 & 0.005& 0.004 & 0.0009 \\
+    \hline 
+    key6 & 0.005232 & 0.0008 & 0.0015 \\
+    \hline
+    \textcolor{blue}{Average Time} & 0.004047 & 0.0001566 & 0.00087667 \\
+    \hline
+\end{tabular}
+\end{center}
+\subsection{Reasons for Results}
+As you can see the average time goes down after running the same \textcolor{blue}{GET} requests for the second and third time. This is because
+the cache server \textbf{Stores the key's that are requested recently}. In the beginning only \textcolor{red}{key1} is inside the cache. Hence \textbf{initally the time for 
+key1 is low}, and that of the other keys is high. But once all the requests have been made for the first time, and we move on to the second time, the
+\textcolor{blue}{key's are already in the cache!}. Hence the time taken for the cache to return the key is lower since it does not have to query the server for the keys
+that it does not have.
+\begin{equation*}
+    t_{client - cache- client} < t_{client-cache-server-cache-client}
+\end{equation*}
+Requests 2 and 3 are the ones where only the Cache has been queried , and hence the time taken by them is lesser.
