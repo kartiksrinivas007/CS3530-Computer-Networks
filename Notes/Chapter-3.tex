@@ -1,0 +1,82 @@
+\section{Chapter-3-Multiplexing}
+The socket number is assigned a port number by the Protocol. One process may deal with one or more numbr of sockets. The 
+port number is a \textcolor{blue}{16-bit} number. The port number is used to pass on the \textbf{segment} to the attached process.
+POrt number 21 is used for FTP, 23 for Telnet, 25 for SMTP, 80 for HTTP, 110 for POP3, 143 for IMAP, 443 for HTTPS, 993 for IMAPS, 995.
+\\
+A \textcolor{red}{UDP}  socket is uniquely identified by the destination port number and the destination IP address.
+
+\section{Chapter -4}
+Head of line blocking is when the head of line is waiting for a packet from another port to go to the same designated output port,
+then the whole line is blocked.
+\\
+Output port queueing then the arrival rate may become two times the transmission rate, the rate of arrival is higher, this causes queueing, 
+if this happens continuously then the datagrams, will start getting dropped. Teh questions is what \textcolor{blue}{Drop policy do I use?}
+\\
+Datagrams can be lost due to congestion and lack of buffers, think the video traffic is more important than the file traffic, some packets are more
+critical than the others.
+\textit{switch-fabric -> buffer queueing -> Scheduling-Discipline}, What if the organization is known and then they are given more priority !, this is 
+no longer a \textcolor{blue}{fair world}!, that was not what we wanted in the first place,in general te inout port an output port bandwidths are usually a little bit same
+\subsection{How much buffering?}
+The average buffering time = $RTT \times C$ where $C$ is the capacity of the link. You can't make a large one TB cache because most of the time
+the the cache will be \textcolor{red}{tremendously expensive}, when searches are to be conducted.
+\\
+Recent recommendations state that there may be many TCP senders for information adn sat one million packets are beign sent forma particular group of users
+$G_1$ . The group $G_2$ then will send packets that will be waiting for the forst one million packets to be sent, this is the problem,
+so \textbf{small buffers are sweet}
+\\ Buffer management also performs \textcolor{red}{Marking} of the data in order to signal Network congestion.
+
+\subsection{Packet Scheduling}
+There are several techniques
+\begin{enumerate}
+\item  FCFS - trivial
+\item Priority - Here there is a classification into two queues one that is high priority and low priority, there is \textcolor{green}{Starving of low priority packets}
+\item Round Robin - Here its an equal world, serves all the queues equally, but the problem is that the high priority packets are not served first.
+\item Weighted Fair queueing - \colorbox{BurntOrange}{This is the best one} there is a weighted value of each datagram that is chosen, the average rate - \textcolor{red}{$\frac{w_i}{\sum w_i} R$}
+\end{enumerate}
+\subsubsection{Network Neutrality}
+\textcolor{blue}{Technical} : How should an ISP share it's resources, through the mechanisms
+\textcolor{blue}{Social and economic} principles need to be upheld as well, freedom of speech and enncouraging innovation and more.
+\\
+\lineo
+\section{The Internet Protocol}
+
+\subsection{Network Layer}
+32 bits in width.
+The datagram format as the type fo service the \textcolor{blue}{ECN or diffserv} and the \textcolor{red}{TTL is the maximum number of hops that can be makde by a packet}
+\colorbox{BurntOrange}{TTL is decreased per hop}
+there is also a flag that will show what the upper layers is UDP or TCP.
+There is also a fragmentation check that hels use break the packets into smaller pieces.
+overhead is 20(TCP) + 20(IP) = 40 bytes plus IP information
+\\
+\lineo
+\subsection{IP Addressing}
+The IP addressing uses sub-netting, i.e the router will have input ports that
+take in say \textcolor{blue}{223.1.1.4} and then automatically the inner ones like \textcolor{blue}{223.1.1.2} are connected
+\subsection{Interfaces} The interfaces are the face between the host router and the router itself.
+Eg: IN the hostels, the order of connnections is like -> \textit{Access point -> Router -> switch}
+There is an interface between any two devices that are connected, eg: ethernet interface or wifi station interface.
+\\
+\textbf{Subnet}: Devices that can physically reach other without passing through an intervening router.
+\textbf{IP addresses have structure}: devices in the same subset have common higher order bits
+the \textcolor{red}{hostpart is the remaining lower order bits},the subnet makes being 24 means that the first 24 bits are constant
+and will not change. The subnet \textcolor{BurntOrange}{may have 23 bits and in this case the subnet will only have even numbers} in the second last octet because of this,
+since the last bit of the second last octet, is given away to the host part so that it gets more flexibility.
+
+\subsection{DHCP}
+Goal: host dynamically obtains the IP address from the network server when it "joins the network" 
+can renew its lease on address in use. allows the reuse of addresses, support for mobile addresses that join and leave the network. 
+
+\subsection{DHCP client-server scenario}
+\begin{enumerate}
+\item Do not manually configure IP address
+\item Is there a DHCP server out there
+\item 67 is that standard port for the DHCP communications
+\end{enumerate}
+
+\colorbox{Yellow}{\textcolor{blue}{Routers use an inbuilt DHCP server}}
+
+\section{NAT}
+The NAT uses the translation of global IP to the private IP, 
+then the whole IP address is changed by the NAT
+NAT maintains a table of WAN side address and a LAN side Address.
+replaces the source IP and source port with the public ones when it is going from inside to outside.

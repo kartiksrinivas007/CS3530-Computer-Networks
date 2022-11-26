@@ -1,0 +1,87 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{minted}
+
+\input{preamble}
+\begin{document}
+
+\include{title}
+\renewcommand*\contentsname{Index}
+\tableofcontents
+\newpage
+\section{LLVM-Optimizations}
+This flag can simplify blocks which are unconditional branches and also merge blocks together as  showcased with the code and its CFG with and without the flag given below. 
+\\
+This code consists of 2 simple if loops with a statement within the innermost loop
+\begin{center}
+    \includegraphics[width=\columnwidth]{img/prog1.png}
+\end{center}
+
+\begin{center}
+    \includegraphics[width=\columnwidth]{img/raw_opt1.png}
+\end{center}
+This is the default generated code.
+\begin{center}
+    \includegraphics[width=\columnwidth]{img/opt_opt1.png}
+\end{center}
+This is the optimized code.Notice how the earlier block which only had a jump to the return statement has been removed and also how the block for the second and first if statement have been merged.
+\subsection{loop-simplify flag}
+\subsection{loop invariant code motion}
+This optimization tries to reduce the amount of code within a loop in order to speedup execution based on the 10-90 principle(10\% of code is run 90\% of the time) .This works by moving unnecessary loads and stores outside the loop by seeing which operations depend on the loop variables and which do not.
+\begin{center}
+    \includegraphics[width=\columnwidth]{img/prog3.png}
+\end{center}
+\begin{center}
+    \includegraphics[width=0.6\columnwidth]{img/raw_opt3.png}
+\end{center}
+This is the default generated code.
+\begin{center}
+    \includegraphics[width=0.6\columnwidth]{img/opt_opt3.png}
+\end{center}
+This is the optimized code ,notice how in the first loop where the value of a doesnt depend on loop variable i the storing instruction of a is moved outside of a completely,while in the next loop where b does depend on j instead of doing all the load and stores in the loop the code simply adds the value to a temporary variable and the loading into b is done at the end of the loop. 
+
+
+
+\subsection{dead code elimination}
+\section{Embedded Compilers}
+\subsection{Summary of the characteristics for embedded compilers}
+Usually the languages in which the programs for embedded C Systems are written are \textcolor{blue}{embedded C} programs. The embedded C program is a common name given for all the version and extensions of the C programming language that are made to communicate with the low level microprocessor in order to perform low -level IO operations and fixed point arithmetic. Compilers that convert embedded C to hexcode can be considered to be embedded C compilers. The compilers that are being used in the lower levels must produce
+\textcolor{blue}{heavily optimized code} to ensure that the time to compute is not too large.They must also be \textbf{energy efficient} since they are working on smaller devices.
+\\
+\\
+Some of the famous companies that build Embedded C compilers are \textcolor{green}{Green-Hills} and \textcolor{red}{BiPOm} electronic
+The EC compilers are very close to the hardware and are completely OS independent( since they work on a much lower level)
+\subsection{Optimizations}
+It is quite obvious that the optimizations will reduce the amount of time taken to actually execute the generated assembly code , since that is the main purpose of an optimization. For the analysis of energy on various GCC optimizations,  I read the following research paper\cite{4786702}
+First let us analyze how exactly we get the locations of the optimization levels in GCC
+and correspondingly check how exactly they change the power consumption according to the paper
+\begin{verbatim}
+    gcc -Q -O0 --help=optimizers | grep "expression"
+\end{verbatim}
+On investigation we can find the flags for which these ones are actually enabled they are the following
+\begin{itemize}
+    \item \textcolor{blue}{Strength - Reduction} Part of \verb|-fivopts| flag which is present in all optimizations O0 and above.(but according to the paper it is only in levels \verb|02 and 03|
+    \item \textcolor{blue}{Full inlining} is present only in levels above O3
+    \item \textcolor{blue}{Loop unrolling} the flag is \verb|-funroll-loops| the grow size version is present only after 03, so we can assume that it's a higher level optimization.
+    \item \textcolor{red}{Subexpression elimination} This is enabled using \verb|-fgcse| and it is done only on optimization levels \verb|O2, O3, Os|
+\end{itemize}
+Now, since that we know the optimization levels for each of these flags we can now compare the energy usage using \cite{4786702}
+
+\subsection{Energy comparison}
+The energy taken by the levels can be seen in this table, 
+source : \cite{4786702}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.35]{img/power.png}
+    \caption{Power consumption levels per optimization}
+    \label{fig:my_label}
+\end{figure}
+So in terms of the current peaks the optimizations are more expensive but on terms of total power consumed, the higher the optimization, the lesser the time to execute and the lesser the energy consumed (see last row)
+\subsection{Impact on Memory}
+It is quite evident that on aggressive loop enrolling, using the flag \verb|-funroll-loops| will not always be good, since the \textcolor{red}{size of the loop enrolled code may become too large}. Common sub-expression elimination will follow loop enrolling usually according to the \href{https://gcc.gnu.org/onlinedocs/gcc-4.5.2/gcc/Optimize-Options.html}{GCC optimizations page}.
+The memory consumption by other optimizations such as inlining of functions will also be larger if the number of functions being inlined is too large.  GCC has an optimization called \verb|-finline-small-functions| to handle this problem. The rest of the optimizations like strength reduction do not have too much impact on the memory space used by the program
+\newpage
+\bibliographystyle{alpha}
+\bibliography{Ref.bib}
+\end{document}
